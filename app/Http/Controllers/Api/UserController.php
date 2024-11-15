@@ -128,8 +128,6 @@ class UserController extends Controller
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
-            'email' => 'required|email|max:255',
-            'password' => 'required|string|min:6',
         ]);
 
         if ($validate->fails()) {
@@ -143,7 +141,7 @@ class UserController extends Controller
         }
 
         try {
-            $userData = $request->only(['first_name', 'last_name', 'phone_number', 'email', 'password']);
+            $userData = $request->only(['first_name', 'last_name', 'phone_number']);
             $user = $this->userRepository->updateById($id, $userData);
 
             if (!$user) {
