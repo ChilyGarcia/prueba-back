@@ -30,9 +30,7 @@ class UserController extends Controller
             );
         }
 
-        return response()->json([
-            $users,
-        ]);
+        return response()->json([$users]);
     }
 
     public function show($id): JsonResponse
@@ -96,12 +94,7 @@ class UserController extends Controller
             $userData = $request->only(['first_name', 'last_name', 'phone_number', 'email', 'password']);
             $user = $this->userRepository->create($userData);
 
-            return response()->json(
-                [
-                    $user,
-                ],
-                201,
-            );
+            return response()->json([$user], 201);
         } catch (\Exception $e) {
             return response()->json(
                 [
@@ -179,11 +172,22 @@ class UserController extends Controller
             );
         }
 
+        $auth = auth()->guard('api')->user();
+
+        if ($auth->id == $id) {
+            return response()->json(
+                [
+                    'message' => 'You cannot delete your own account',
+                ],
+                403,
+            );
+        }
+
         try {
             $user = $this->userRepository->findById($id);
 
             if (!$user) {
-                return response()->json(
+              return response()->json(
                     [
                         'message' => 'User not found',
                     ],
