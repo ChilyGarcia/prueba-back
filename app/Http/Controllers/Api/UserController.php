@@ -31,7 +31,7 @@ class UserController extends Controller
         }
 
         return response()->json([
-            'users' => $users,
+            $users,
         ]);
     }
 
@@ -98,7 +98,7 @@ class UserController extends Controller
 
             return response()->json(
                 [
-                    'user' => $user,
+                    $user,
                 ],
                 201,
             );
