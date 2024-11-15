@@ -26,7 +26,7 @@ class UserController extends Controller
                 [
                     'message' => 'No users found',
                 ],
-                404
+                404,
             );
         }
 
@@ -42,7 +42,7 @@ class UserController extends Controller
                 [
                     'message' => 'Invalid user ID',
                 ],
-                400
+                400,
             );
         }
 
@@ -54,7 +54,7 @@ class UserController extends Controller
                     [
                         'message' => 'User not found',
                     ],
-                    404
+                    404,
                 );
             }
 
@@ -67,7 +67,7 @@ class UserController extends Controller
                     'message' => 'An error occurred while retrieving the user',
                     'error' => $e->getMessage(),
                 ],
-                500
+                500,
             );
         }
     }
@@ -88,7 +88,7 @@ class UserController extends Controller
                     'message' => 'Invalid data',
                     'errors' => $validate->errors(),
                 ],
-                400
+                400,
             );
         }
 
@@ -100,7 +100,7 @@ class UserController extends Controller
                 [
                     'user' => $user,
                 ],
-                201
+                201,
             );
         } catch (\Exception $e) {
             return response()->json(
@@ -108,7 +108,7 @@ class UserController extends Controller
                     'message' => 'An error occurred while creating the user',
                     'error' => $e->getMessage(),
                 ],
-                500
+                500,
             );
         }
     }
@@ -120,7 +120,7 @@ class UserController extends Controller
                 [
                     'message' => 'Invalid user ID',
                 ],
-                400
+                400,
             );
         }
 
@@ -138,7 +138,7 @@ class UserController extends Controller
                     'message' => 'Invalid data',
                     'errors' => $validate->errors(),
                 ],
-                400
+                400,
             );
         }
 
@@ -151,7 +151,7 @@ class UserController extends Controller
                     [
                         'message' => 'User not found',
                     ],
-                    404
+                    404,
                 );
             }
 
@@ -165,7 +165,7 @@ class UserController extends Controller
                     'message' => 'An error occurred while updating the user',
                     'error' => $e->getMessage(),
                 ],
-                500
+                500,
             );
         }
     }
@@ -177,7 +177,7 @@ class UserController extends Controller
                 [
                     'message' => 'Invalid user ID',
                 ],
-                400
+                400,
             );
         }
 
@@ -189,7 +189,7 @@ class UserController extends Controller
                     [
                         'message' => 'User not found',
                     ],
-                    404
+                    404,
                 );
             }
 
@@ -204,7 +204,7 @@ class UserController extends Controller
                     'message' => 'An error occurred while deleting the user',
                     'error' => $e->getMessage(),
                 ],
-                500
+                500,
             );
         }
     }
